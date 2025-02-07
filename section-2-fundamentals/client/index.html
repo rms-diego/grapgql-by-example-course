@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Graph QL client</title>
+  </head>
+  <body>
+    <h1>Graph QL client</h1>
+
+    <p>
+      The server says:
+      <strong id="response">loading...</strong>
+    </p>
+  </body>
+
+  <script>
+    window.onload = async () => {
+      async function fetchData() {
+        const res = await fetch("http://localhost:4000/graphql", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: `query { greeting }` }),
+        });
+
+        const { data } = await res.json();
+
+        return data;
+      }
+
+      async function main() {
+        const responseTag = document.querySelector("#response");
+        const { greeting } = await fetchData();
+
+        responseTag.textContent = greeting;
+      }
+
+      main();
+    };
+  </script>
+</html>
