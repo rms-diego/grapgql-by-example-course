@@ -1,5 +1,5 @@
 import { getCompany } from "../db/companies.js";
-import { getJobs } from "../db/jobs.js";
+import { getJob, getJobs } from "../db/jobs.js";
 
 export const resolvers = {
   Job: {
@@ -10,5 +10,6 @@ export const resolvers = {
   Query: {
     hello: () => "Hello world!",
     jobs: () => getJobs(),
+    job: (_, { id }: { id: string }) => getJob(id),
   },
 };
