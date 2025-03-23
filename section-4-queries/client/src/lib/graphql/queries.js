@@ -23,7 +23,7 @@ export async function getJobs() {
   return jobs;
 }
 
-export async function getJob(jobId) {
+export async function getJob(id) {
   const query = gql`
     query Query($id: ID!) {
       job(id: $id) {
@@ -40,6 +40,6 @@ export async function getJob(jobId) {
     }
   `;
 
-  const { job } = await client.request(query, { id: jobId });
+  const { job } = await client.request(query, { id });
   return job;
 }

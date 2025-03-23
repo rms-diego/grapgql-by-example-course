@@ -10,7 +10,7 @@ function JobPage() {
   const [job, setJob] = useState();
 
   useEffect(() => {
-    getJob(jobId).then((jobs) => setJob(jobs));
+    getJob(jobId).then(setJob);
   }, []);
 
   if (!job) {
