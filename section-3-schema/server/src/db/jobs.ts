@@ -11,13 +11,7 @@ export async function getJob(id: string) {
   return await getJobTable().first().where({ id });
 }
 
-type CreateJobDTO = {
-  companyId: string;
-  title: string;
-  description: string;
-};
-
-export async function createJob({ companyId, title, description }: CreateJobDTO) {
+export async function createJob({ companyId, title, description }: Omit<Job, "id" | "createdAt">) {
   const job = {
     id: generateId(),
     companyId,
@@ -38,9 +32,7 @@ export async function deleteJob(id: string) {
   return job;
 }
 
-type UpdateJobDTO = CreateJobDTO & { id: string };
-
-export async function updateJob({ id, title, description }: UpdateJobDTO) {
+export async function updateJob({ id, title, description }: Omit<Job, "createdAt">) {
   const job = await getJobTable().first().where({ id });
   if (!job) {
     throw new Error(`Job not found: ${id}`);

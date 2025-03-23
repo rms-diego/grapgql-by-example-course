@@ -7,5 +7,8 @@ type Job {
   id: ID!
   title: String!
   description: String!
+  """
+  This field represents createdAt date.
+  """
   date: String!
 }
