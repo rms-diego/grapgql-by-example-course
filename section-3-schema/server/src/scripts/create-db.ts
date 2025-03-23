@@ -28,7 +28,7 @@ async function main() {
     table.text("password").notNullable();
   });
 
-  await connection.table("company").insert([
+  await connection.table<Company>("company").insert([
     {
       id: "FjcJCHJALA4i",
       name: "Facegle",
@@ -43,7 +43,7 @@ async function main() {
     },
   ]);
 
-  await connection.table("job").insert([
+  await connection.table<Job>("job").insert([
     {
       id: "f3YzmnBZpK0o",
       companyId: "FjcJCHJALA4i",
@@ -68,7 +68,7 @@ async function main() {
     },
   ]);
 
-  await connection.table("user").insert([
+  await connection.table<User>("user").insert([
     {
       id: "AcMJpL7b413Z",
       companyId: "FjcJCHJALA4i",

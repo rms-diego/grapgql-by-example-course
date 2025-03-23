@@ -1,19 +1,12 @@
-import { generateId } from "../db/ids.js";
+import { getJobs } from "../db/jobs.js";
 
 export const resolvers = {
+  Job: {
+    date: (job: Job) => job.createdAt.split("T")[0],
+  },
+
   Query: {
     hello: () => "Hello world!",
-    jobs: () => [
-      {
-        id: generateId(),
-        title: "Software Engineer",
-        description: "Google",
-      },
-      {
-        id: generateId(),
-        title: "Software Engineer",
-        description: "Facebook",
-      },
-    ],
+    jobs: () => getJobs(),
   },
 };

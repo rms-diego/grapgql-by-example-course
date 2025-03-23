@@ -1,6 +1,6 @@
 import { connection } from "./connection.js";
 
-const getUserTable = () => connection.table("user");
+const getUserTable = () => connection.table<User>("user");
 
 export async function getUser(id: string) {
   return await getUserTable().first().where({ id });
