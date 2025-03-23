@@ -10,6 +10,7 @@ export const resolvers = {
   Query: {
     hello: () => "Hello world!",
     jobs: () => getJobs(),
-    job: (_, { id }: { id: string }) => getJob(id),
+    job: (_parent, { id }: { id: string }) => getJob(id),
+    company: (_parent, { id }: { id: string }) => getCompany(id),
   },
 };
