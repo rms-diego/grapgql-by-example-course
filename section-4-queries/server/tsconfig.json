@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build",
+    "strict": false,
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "module": "NodeNext"
+  },
+  "ts-node": {
+    "esm": true
+  }
+}
