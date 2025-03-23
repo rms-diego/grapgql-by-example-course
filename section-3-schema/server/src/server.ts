@@ -12,7 +12,6 @@ import { resolvers } from "./resolvers/resolvers.js";
 async function main() {
   const schemaPath = path.join(path.dirname(import.meta.filename), "..", "schema.graphql");
   const typeDefs = await fs.readFile(schemaPath, "utf-8");
-  const PORT = 9000;
 
   const app = express();
 
@@ -23,6 +22,7 @@ async function main() {
   app.use("/graphql", apolloMiddleware(apolloServer) as unknown as RequestHandler);
   app.post("/login", handleLogin);
 
+  const PORT = 9000;
   app.listen({ port: PORT }, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Graphql address: http://localhost:${PORT}/graphql`);
