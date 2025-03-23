@@ -1,6 +1,6 @@
 type Query {
   hello: String
-  job: Job
+  jobs: [Job!]
 }
 
 type Job {
