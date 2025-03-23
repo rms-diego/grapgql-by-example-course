@@ -1,4 +1,4 @@
-import { connection } from "../db/connection";
+import { connection } from "../db/connection.js";
 
 async function main() {
   const INTERVAL = 4 * 60 * 60 * 1000; // 4h
