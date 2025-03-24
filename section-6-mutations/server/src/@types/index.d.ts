@@ -18,3 +18,9 @@ type Company = {
   name: string;
   description?: string;
 };
+
+type CreateJobInput = {
+  title: string;
+  description: string;
+  companyId: string;
+};

@@ -1,5 +1,5 @@
 import { getCompany } from "../db/companies.js";
-import { getJob, getJobs, getJobsByCompany } from "../db/jobs.js";
+import { createJob, getJob, getJobs, getJobsByCompany } from "../db/jobs.js";
 
 import { notFoundError } from "../utils/not-found-error.js";
 
@@ -32,5 +32,12 @@ export const resolvers = {
 
       return company;
     },
+  },
+
+  Mutation: {
+    createJob: async (
+      _parent,
+      { job: { title, description, companyId } }: { job: CreateJobInput },
+    ) => createJob({ title, description, companyId }),
   },
 };
