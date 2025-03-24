@@ -24,3 +24,9 @@ type CreateJobInput = {
   description: string;
   companyId: string;
 };
+
+type UpdateJobInput = {
+  id: string;
+  title: string;
+  description: string;
+};

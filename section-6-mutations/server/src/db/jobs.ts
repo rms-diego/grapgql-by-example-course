@@ -36,7 +36,7 @@ export async function deleteJob(id: string) {
   return job;
 }
 
-export async function updateJob({ id, title, description }: Omit<Job, "createdAt">) {
+export async function updateJob({ id, title, description }: Omit<Job, "createdAt" | "companyId">) {
   const job = await getJobTable().first().where({ id });
   if (!job) {
     throw new Error(`Job not found: ${id}`);

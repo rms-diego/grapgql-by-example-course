@@ -1,5 +1,5 @@
 import { getCompany } from "../db/companies.js";
-import { createJob, getJob, getJobs, getJobsByCompany } from "../db/jobs.js";
+import { createJob, deleteJob, getJob, getJobs, getJobsByCompany, updateJob } from "../db/jobs.js";
 
 import { notFoundError } from "../utils/not-found-error.js";
 
@@ -39,5 +39,16 @@ export const resolvers = {
       _parent,
       { job: { title, description, companyId } }: { job: CreateJobInput },
     ) => createJob({ title, description, companyId }),
+
+    deleteJob: async (_parent, { id }: { id: string }) => deleteJob(id),
+
+    updateJob: async (_parent, { job: { id, title, description } }: { job: UpdateJobInput }) => {
+      const job = await getJob(id);
+      if (!job) {
+        throw notFoundError("Job not found");
+      }
+
+      return updateJob({ id, title, description });
+    },
   },
 };
